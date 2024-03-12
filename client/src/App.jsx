@@ -6,6 +6,7 @@ function App() {
   const [image, setImage] = useState(null)
   const [input, setInput] = useState("")
   const [selectedImage, setSelectedImage] = useState([])
+  const [index, setIndex] = useState(0)
   const url = `https://images-search1.p.rapidapi.com/search?q=${input}`;
   const options = {
     method: 'GET',
@@ -48,8 +49,9 @@ function App() {
         onChange={handleInputChange}></input>
       <button >show</button>
     </form>
-    <img
-      src={image.value[0].contentUrl}/>
+    {image ? <img
+      className='optionImages'
+      src=  {image.value[index].contentUrl}/>: null}
     </>
   )
 }
