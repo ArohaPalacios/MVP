@@ -40,6 +40,17 @@ function App() {
       });
   };
  
+  function handleIndex(action) {
+    if (action === "next") {
+      if (index < image.value.length) {
+        setIndex(index + 1)
+      }
+    } else if (action === "prev") {
+      if (index > 0) {
+        setIndex(index - 1)
+      }
+  }
+}
 
   return (
     <>
@@ -49,9 +60,15 @@ function App() {
         onChange={handleInputChange}></input>
       <button >show</button>
     </form>
-    {image ? <img
-      className='optionImages'
-      src=  {image.value[index].contentUrl}/>: null}
+    {image ? 
+      (<>
+      <img
+        className='optionImages'
+        src=  {image.value[index].contentUrl}/>
+      <button onClick={()=>handleIndex("prev")}>prev</button>
+      <button onClick={()=>handleIndex("next")}>next</button>
+      </>
+      ): null}
     </>
   )
 }
