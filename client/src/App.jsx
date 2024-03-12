@@ -4,6 +4,7 @@ import './App.css'
 
 function App() {
   const [image, setImage] = useState(null)
+  const [input, setInput] = useState("")
   const url = 'https://images-search1.p.rapidapi.com/search?q=punto%20muerto%20economia';
   const options = {
     method: 'GET',
@@ -12,6 +13,10 @@ function App() {
       "Content-Type": "application/json",
       'X-RapidAPI-Host': 'images-search1.p.rapidapi.com'
     }}
+
+    function handleInputChange(event)  {
+      setInput(event.target.value)
+    }
 
    //retrieve image data and populate image state variable.
    const getImage = () => {
@@ -30,7 +35,12 @@ function App() {
  
 
   return (
+    <>
+    <input
+      value={input}
+      onChange={handleInputChange}></input>
     <button onClick={getImage}>send</button>
+    </>
   )
 }
 
