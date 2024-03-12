@@ -6,6 +6,40 @@
 } 
 
 .optionImages {
+  margin-top: 2%;
   max-width: 25%;
+  width: 100%;
+  max-width: 150px; /*control width, this is provisional*/
+  height: auto;
 }
+
+.gallery_container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: stretch;
+  flex-wrap: wrap;
+  flex-direction: row;
+  gap: 10px;
+}
+
+.img_container .dlt_btn{
+  position:relative;
+  top: 0%;
+  left: 0%;
+  transform: translate(-110%, -50%);
+  background-color: #f1f1f1;
+  color: black;
+  font-size: 16px;
+  padding: 10px 10px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.img_container .dlt_btn:hover {
+  background-color: black;
+  color: white;
+}
+
 
