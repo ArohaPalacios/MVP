@@ -62,11 +62,12 @@ function App() {
     </form>
     {image ? 
       (<>
+      <button onClick={()=>handleIndex("prev")}>‹‹</button>
       <img
         className='optionImages'
         src=  {image.value[index].contentUrl}/>
-      <button onClick={()=>handleIndex("prev")}>prev</button>
-      <button onClick={()=>handleIndex("next")}>next</button>
+      
+      <button onClick={()=>handleIndex("next")}>››</button>
       </>
       ): null}
     </>
