@@ -5,7 +5,8 @@ import './App.css'
 function App() {
   const [image, setImage] = useState(null)
   const [input, setInput] = useState("")
-  const url = 'https://images-search1.p.rapidapi.com/search?q=punto%20muerto%20economia';
+  const [selectedImage, setSelectedImage] = useState([])
+  const url = `https://images-search1.p.rapidapi.com/search?q=${input}`;
   const options = {
     method: 'GET',
     headers: {
@@ -16,6 +17,11 @@ function App() {
 
     function handleInputChange(event)  {
       setInput(event.target.value)
+    }
+
+    function handleSubmit(event) {
+      event.preventDefault()
+      getImage(event.target.value)
     }
 
    //retrieve image data and populate image state variable.
@@ -36,10 +42,14 @@ function App() {
 
   return (
     <>
-    <input
-      value={input}
-      onChange={handleInputChange}></input>
-    <button onClick={getImage}>send</button>
+    <form onSubmit={handleSubmit}>
+      <input
+        value={input}
+        onChange={handleInputChange}></input>
+      <button >show</button>
+    </form>
+    <img
+      src={image.value[0].contentUrl}/>
     </>
   )
 }
