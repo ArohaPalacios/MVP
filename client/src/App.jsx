@@ -21,16 +21,10 @@ function App() {
     setGallery((state) => [...state, {...newImage, id: uuidv4()}])
   }
 
-  function handleDeleteFromGallery(idx) {
+  function handleDeleteFromGallery(id) {
     setGallery(currentGallery=> {
-      return currentGallery.filter(image=> image.index !== idx)
+      return currentGallery.filter(image=> image.id !== id)
     })
-  }
-
-  function deleteTodo(id) {
-    setTodos(currentTodos=> {
-    return currentTodos.filter(todo => todo.id !== id)
-  })
   }
 
 
@@ -43,7 +37,7 @@ function App() {
         addToGallery= {(newImage)=> handleAddToGallery(newImage)}
         images= {optionImages}/>: null}
     {gallery ? 
-    <Gallery gallery = {gallery} deleteFromGallery={(idx)=>handleDeleteFromGallery(idx)}/> : null}
+    <Gallery gallery = {gallery} deleteFromGallery={(id)=>handleDeleteFromGallery(id)}/> : null}
     </>
   )
 }
