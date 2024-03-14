@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import './App.css'
+import { v4 as uuidv4 } from "uuid";
 import SearchImageView from "./SearchImageView.jsx"
 import OptionImages from "./OptionImages.jsx"
 import Gallery from "./Gallery.jsx"
@@ -17,7 +18,7 @@ function App() {
   }
 
   function handleAddToGallery(newImage) {
-    setGallery((state) => [...state, newImage])
+    setGallery((state) => [...state, {...newImage, id: uuidv4()}])
   }
 
   function handleDeleteFromGallery(idx) {
