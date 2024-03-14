@@ -1,9 +1,9 @@
 import { useState } from 'react'
 import './App.css'
 import { v4 as uuidv4 } from "uuid";
-import SearchImageView from "./SearchImageView.jsx"
-import OptionImages from "./OptionImages.jsx"
-import Gallery from "./Gallery.jsx"
+import SearchImageView from "./components/SearchImageView.jsx"
+import OptionImages from "./components/OptionImages.jsx"
+import Gallery from "./components/Gallery.jsx"
 
 
 function App() {
