@@ -4,6 +4,7 @@ import SearchImageView from "./SearchImageView.jsx"
 import OptionImages from "./OptionImages.jsx"
 import Gallery from "./Gallery.jsx"
 
+
 function App() {
   const [optionImages, setOptionImages] = useState(null)
   const [gallery, setGallery] = useState([])
@@ -19,15 +20,29 @@ function App() {
     setGallery((state) => [...state, newImage])
   }
 
+  function handleDeleteFromGallery(idx) {
+    setGallery(currentGallery=> {
+      return currentGallery.filter(image=> image.index !== idx)
+    })
+  }
+
+  function deleteTodo(id) {
+    setTodos(currentTodos=> {
+    return currentTodos.filter(todo => todo.id !== id)
+  })
+  }
+
+
   return (
     <>
+    
     <SearchImageView populateImage={(json)=>populateImage(json)}/>
     {optionImages ? 
       <OptionImages 
         addToGallery= {(newImage)=> handleAddToGallery(newImage)}
         images= {optionImages}/>: null}
     {gallery ? 
-    <Gallery gallery = {gallery}/> : null}
+    <Gallery gallery = {gallery} deleteFromGallery={(idx)=>handleDeleteFromGallery(idx)}/> : null}
     </>
   )
 }

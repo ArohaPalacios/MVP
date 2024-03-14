@@ -1,17 +1,23 @@
 import { useState } from "react";
 
-export default function({gallery}) {
+export default function({gallery, deleteFromGallery}) {
+
+    function deleteImage (idx) {
+        deleteFromGallery(idx)
+    }
 
     return (
         <div className="gallery_container">
-        {gallery.map((image, index)=> (
+        {gallery.map((image, idx)=> (
             <div 
-            key= {index}
+            key= {idx}
             className="img_container">
                 <img
                     className='optionImages'
                     src={image.contentUrl}/>
-            <i className="fa-regular fa-trash-can"></i>
+            <i 
+                onClick={()=>deleteImage(idx)}
+                className="fa-regular fa-trash-can"></i>
             </div>
         )) 
         }
