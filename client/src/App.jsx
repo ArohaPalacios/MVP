@@ -27,6 +27,10 @@ function App() {
     })
   }
 
+  function handleClearGallery() {
+    setGallery([])
+  }
+
 
   return (
     <>
@@ -36,8 +40,12 @@ function App() {
       <OptionImages 
         addToGallery= {(newImage)=> handleAddToGallery(newImage)}
         images= {optionImages}/>: null}
-    {gallery ? 
-    <Gallery gallery = {gallery} deleteFromGallery={(id)=>handleDeleteFromGallery(id)}/> : null}
+    {gallery.length ? 
+    <Gallery 
+      gallery = {gallery} 
+      handleClearGallery= {handleClearGallery}
+      deleteFromGallery={(id)=>handleDeleteFromGallery(id)}/> 
+      : null}
     </>
   )
 }
