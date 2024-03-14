@@ -18,7 +18,7 @@ function App() {
   }
 
   function handleAddToGallery(newImage) {
-    setGallery((state) => [...state, {...newImage, id: uuidv4()}])
+    setGallery((state) => [...state, {...newImage,  id: uuidv4()}])
   }
 
   function handleDeleteFromGallery(id) {
