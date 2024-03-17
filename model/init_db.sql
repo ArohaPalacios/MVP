@@ -15,15 +15,15 @@ SET foreign_key_checks = 1;
 
 CREATE TABLE `sentences`(
     `id` BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    `sentence` TEXT NOT NULL,
-    `images_id` BIGINT UNSIGNED NOT NULL
+    `sentence` TEXT NOT NULL
 );
 CREATE TABLE `images`(
     `id` BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
     `search_term` VARCHAR(255) NOT NULL,
     `URL` TEXT NOT NULL,
     `type` VARCHAR(255) NULL,
-    `concept` VARCHAR(255) NULL
+    `concept` VARCHAR(255) NULL,
+    `sentences_id` BIGINT UNSIGNED NOT NULL
 );
 ALTER TABLE
-    `sentences` ADD CONSTRAINT `sentences_images_id_foreign` FOREIGN KEY(`images_id`) REFERENCES `images`(`id`);
+    `images` ADD CONSTRAINT `images_sentences_id_foreign` FOREIGN KEY(`sentences_id`) REFERENCES `sentences`(`id`);
