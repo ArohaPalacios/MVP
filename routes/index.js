@@ -19,6 +19,17 @@ router.get("/api/images", async (req, res, next) => {
   }
 });
 
+router.get("/api/sentences", async (req, res, next) => {
+  const query = "SELECT * FROM sentences;";
+  try {
+    const results = await db(query);
+    console.log("********", results.data);
+    res.send(results.data);
+  } catch (err) {
+    res.status(500).send(err);
+  }
+});
+
 router.get("/api/images/:sentences_id", async (req, res, next) => {
   const{sentences_id} = req.params
   const query = `SELECT * FROM images WHERE sentences_id=${sentences_id};`;
