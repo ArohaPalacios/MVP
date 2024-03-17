@@ -4,6 +4,7 @@ import { v4 as uuidv4 } from "uuid";
 import SearchImageView from "./components/SearchImageView.jsx"
 import OptionImages from "./components/OptionImages.jsx"
 import Gallery from "./components/Gallery.jsx"
+import Favorites from './components/Favorites.jsx';
 
 
 function App() {
@@ -46,6 +47,7 @@ function App() {
       handleClearGallery= {handleClearGallery}
       deleteFromGallery={(id)=>handleDeleteFromGallery(id)}/> 
       : null}
+    <Favorites/>
     </>
   )
 }

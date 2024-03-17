@@ -7,7 +7,7 @@ router.get('/', function(req, res, next) {
   res.send({ title: 'Express' })
 });
 
-
+//get all images
 router.get("/api/images", async (req, res, next) => {
   const query = "SELECT * FROM images;";
   try {
@@ -19,6 +19,7 @@ router.get("/api/images", async (req, res, next) => {
   }
 });
 
+//get all sentences
 router.get("/api/sentences", async (req, res, next) => {
   const query = "SELECT * FROM sentences;";
   try {
