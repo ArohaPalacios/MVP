@@ -31,6 +31,18 @@ router.get("/api/images/:sentences_id", async (req, res, next) => {
   }
 });
 
+router.get("/api/sentences/:id", async (req, res, next) => {
+  const{id} = req.params
+  const query = `SELECT * FROM sentences WHERE id=${id};`;
+  try {
+    const results = await db(query);
+    console.log("********", results.data);
+    res.send(results.data);
+  } catch (err) {
+    res.status(500).send(err);
+  }
+});
+
 // INSERT a new image into the DB
 //Without error handling, when I send an empty object though Postman, this function still creates an image entry with correspondent id and undefined firstname and lastname.
 router.post("/api/images", async (req, res, next) => {
