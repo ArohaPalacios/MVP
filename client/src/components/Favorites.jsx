@@ -52,10 +52,11 @@ export default function Favorites() {
             </li>)  
         }): null}
         </ul>
-        <div>
+        <div className="gallery_container">
                {favoriteImages.length ? (favoriteImages.map((image)=> {
                 return <img 
                     key= {image.id}
+                    className='optionImages'
                     src={image.URL}/>
                })) : null
                } 
