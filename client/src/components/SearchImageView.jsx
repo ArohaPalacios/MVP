@@ -1,4 +1,5 @@
 import { useState } from "react";
+import "./App.css";
 
 export default function SearchImageView({populateImage}) {
     //Hold the input data so that I can manipulate it later.
