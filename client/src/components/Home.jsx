@@ -32,7 +32,7 @@ export default function() {
   
     return (
       <>
-      
+      <input></input>
       <SearchImageView populateImage={(json)=>populateImage(json)}/>
       {optionImages ? 
         <OptionImages 
