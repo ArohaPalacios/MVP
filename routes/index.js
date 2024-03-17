@@ -25,8 +25,8 @@ router.post("/api/images", async (req, res, next) => {
   //your code here
   //I need a firstname and a lastname, that will be provided by the client in the req.body.
   //Get firstname and lastname as variables by deconstructing req.body object.
-  const { search_term, URL, type, concept } = req.body;
-  const query = `INSERT INTO images (search_term, URL, type, concept) VALUES ('${search_term}', '${URL}','${type}','${concept}');`;
+  const { search_term, URL, type, concept, sentences_id } = req.body;
+  const query = `INSERT INTO images (search_term, URL, type, concept, sentences_id) VALUES ('${search_term}', '${URL}','${type}','${concept}', '${sentences_id}');`;
   try {
     //throw error if firstname or lastname are empty.
     if (!search_term.length) {
@@ -44,4 +44,32 @@ router.post("/api/images", async (req, res, next) => {
   }
 });
 
+router.post("/api/sentences", async (req, res, next) => {
+  //your code here
+  //I need a firstname and a lastname, that will be provided by the client in the req.body.
+  //Get firstname and lastname as variables by deconstructing req.body object.
+  const { sentence} = req.body;
+  const query = `INSERT INTO sentences (sentence) VALUES ('${sentence}');`;
+  try {
+    //throw error if firstname or lastname are empty.
+    if (!sentence.length) {
+      //set status of the error and send message to client.
+      res.status(400).send({
+        message:
+          "please, provide a sentence in the correct format"
+      });
+    }
+    await db(query);
+    const results = await db(`SELECT * FROM sentences;`);
+    res.send(results.data);
+  } catch (err) {
+    res.status(500).send(err);
+  }
+});
+
 module.exports = router;
+
+
+
+
+
