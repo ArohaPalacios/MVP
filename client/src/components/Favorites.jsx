@@ -47,8 +47,9 @@ export default function Favorites() {
         <ul>
         {sentences.length? sentences.map((sentence)=> {
            return( 
-           <li key={sentence.id}>{sentence.sentence}
-           <button onClick={()=>getSentenceImages(sentence.id)}>show</button>
+           <li 
+            key={sentence.id}>{sentence.sentence}
+                <button onClick={()=>getSentenceImages(sentence.id)}>show</button>
             </li>)  
         }): null}
         </ul>
@@ -56,7 +57,7 @@ export default function Favorites() {
                {favoriteImages.length ? (favoriteImages.map((image)=> {
                 return <img 
                     key= {image.id}
-                    className='optionImages'
+                    className='galleryImages'
                     src={image.URL}/>
                })) : null
                } 

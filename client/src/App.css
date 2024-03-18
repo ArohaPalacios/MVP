@@ -5,12 +5,23 @@
   text-align: center;
 } 
 
-.optionImages {
+.optionImages, .galleryImages {
   margin-top: 2%;
   max-width: 25%;
   width: 100%;
   max-width: 150px; /*control width, this is provisional*/
   height: auto;
+  border:solid 5px hsla(0, 95%, 35%, 1);
+  
+}
+
+/* .gallery_container{
+  border:solid 1px hsla(0, 95%, 35%, 1);
+} */
+
+.galleryImages {
+  border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+  margin-bottom: 5px;
 }
 
 .gallery_container {

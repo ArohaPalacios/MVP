@@ -19,7 +19,7 @@ export default function({gallery, deleteFromGallery, handleClearGallery}) {
             key= {image.id}
             className="img_container">
                 <img
-                    className='optionImages'
+                    className='galleryImages'
                     src={image.contentUrl}/>
             <i 
                 onClick={()=>deleteImage(image.id)}
