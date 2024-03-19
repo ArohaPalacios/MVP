@@ -40,7 +40,7 @@ export default function SearchImageView({populateImage, setPromptInput, promptIn
       }
       const json = await response.json();
       // Populate image
-      if (json.value.length && json.value[0].contentUrl) {
+      if (json.value && json.value[0].contentUrl) {
         
         populateImage(json);
       setError(null); // Reset error state if successful
