@@ -23,6 +23,7 @@ export default function() {
   
     function handleAddToGallery(newImage) {
       setGallery((state) => [...state, {...newImage, search_term: promptInput, id: uuidv4()}])
+      setPromptInput("")
     }
   
     function handleDeleteFromGallery(id) {
@@ -38,6 +39,10 @@ export default function() {
     function handleSentenceInputChange(event)  {
         setSentenceInput(event.target.value)
       }
+
+    function handleAddToFavorites() {
+
+    }
   
   
     return (
@@ -57,6 +62,7 @@ export default function() {
           images= {optionImages}/>: null)}
       {gallery.length ? 
       <Gallery 
+        handleAddToFavorites = {handleAddToFavorites}
         gallery = {gallery} 
         handleClearGallery= {handleClearGallery}
         deleteFromGallery={(id)=>handleDeleteFromGallery(id)}/> 

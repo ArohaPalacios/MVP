@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 
-export default function({gallery, deleteFromGallery, handleClearGallery}) {
+export default function({gallery, deleteFromGallery, handleClearGallery, handleAddToFavorites}) {
 
     function deleteImage (id) {
         deleteFromGallery(id)
@@ -9,6 +9,10 @@ export default function({gallery, deleteFromGallery, handleClearGallery}) {
 
     function clearGallery() {
         handleClearGallery()
+    }
+
+    function addToFavorites() {
+        handleAddToFavorites()
     }
 
     return (
@@ -30,7 +34,7 @@ export default function({gallery, deleteFromGallery, handleClearGallery}) {
         }
         </div>
         <button onClick={clearGallery}>CLEAR GALLERY</button>
-        {/* <button onClick={handleAddToFavorites}></button> */}
+        <button onClick={addToFavorites}>ADD TO FAVORITES</button>
             </>
     )
 }
