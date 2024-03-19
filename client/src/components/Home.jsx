@@ -18,7 +18,7 @@ export default function() {
     }
   
     function handleAddToGallery(newImage) {
-      setGallery((state) => [...state, {...newImage,  id: uuidv4()}])
+      setGallery((state) => [...state, {...newImage, search_term: promptInput, id: uuidv4()}])
     }
   
     function handleDeleteFromGallery(id) {
