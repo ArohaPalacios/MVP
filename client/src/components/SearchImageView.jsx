@@ -30,18 +30,18 @@ export default function SearchImageView({populateImage, setPromptInput, promptIn
         getImage()
       }
        //retrieve image data and populate image state variable.
-   const getImage = () => {
-    //contact api
-    fetch(url, options)
-      //parse api response to js
-      .then(response => response.json())
-      //populate students state variable with the retrieved data.
-      .then(json => {
-        populateImage(json);
-      })
-      .catch(error => {
-        console.log(error);
-      });
+
+  const getImage = async () => {
+    try {
+      // Contact API and parse response to JSON
+      const response = await fetch(url, options);
+      const json = await response.json();
+  
+      // Populate image
+      populateImage(json);
+    } catch (error) {
+      console.log(error);
+    }
   };
     return (
       <>

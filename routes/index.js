@@ -13,6 +13,9 @@ router.get("/api/images", async (req, res, next) => {
   try {
     const results = await db(query);
     console.log("********", results.data);
+    if (!results.ok) {
+      res.send("something went wrong")
+    }
     res.send(results.data);
   } catch (err) {
     res.status(500).send(err);

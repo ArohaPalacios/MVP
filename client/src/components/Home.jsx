@@ -9,11 +9,15 @@ export default function() {
     const [gallery, setGallery] = useState([])
     const [sentenceInput, setSentenceInput] = useState("")
     const [promptInput, setPromptInput] = useState("")
+    const [error, setError] = useState (null)
   
     //populate the state variable that holds the pictures shown as options to choose.
     //the data comes from the SearchImageView component.
     //This function is sent to it as props.
     function populateOptionImages(json) {
+        // if (!json) {
+        //     setError("Image not found, please try again")
+        // }
       setOptionImages(json)
     }
   
@@ -46,10 +50,10 @@ export default function() {
         promptInput = {promptInput}
         setPromptInput={setPromptInput}
         populateImage={(json)=>populateOptionImages(json)}/>
-      {optionImages ? 
+      {error? <p>{error}</p> :(optionImages ? 
         <OptionImages 
           addToGallery= {(newImage)=> handleAddToGallery(newImage)}
-          images= {optionImages}/>: null}
+          images= {optionImages}/>: null)}
       {gallery.length ? 
       <Gallery 
         gallery = {gallery} 
