@@ -1,12 +1,12 @@
 import { useState } from "react";
 
 
-export default function SearchImageView({populateImage}) {
+export default function SearchImageView({populateImage, setPromptInput, promptInput}) {
     //Hold the input data so that I can manipulate it later.
-    const [input, setInput] = useState("")
+    // const [promptInput, setPromptInput] = useState("")
     
     //URL of the API, I send the input as params.
-    const url = `https://images-search1.p.rapidapi.com/search?q=${input}`;
+    const url = `https://images-search1.p.rapidapi.com/search?q=${promptInput}`;
     
     //Fetch second argument. The API proposed this syntaxis, separated from the fetch, and it looks cleaner.
     const options = {
@@ -19,7 +19,7 @@ export default function SearchImageView({populateImage}) {
     
     //populate input variable with the text the user enters in input field.
     function handleInputChange(event)  {
-        setInput(event.target.value)
+      setPromptInput(event.target.value)
       }
     
     //prevent from refreshing when submit is clicked.
@@ -47,9 +47,9 @@ export default function SearchImageView({populateImage}) {
       <>
         <form onSubmit={handleSubmit}>
         <input
-          value={input}
+          value={promptInput}
           onChange={handleInputChange}></input>
-        <button >show</button>
+        <button >search</button>
       </form>
       </>
     )

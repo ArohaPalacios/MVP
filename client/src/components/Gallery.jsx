@@ -30,6 +30,7 @@ export default function({gallery, deleteFromGallery, handleClearGallery}) {
         }
         </div>
         <button onClick={clearGallery}>CLEAR GALLERY</button>
+        <button onClick={handleAddToFavorites}></button>
             </>
     )
 }

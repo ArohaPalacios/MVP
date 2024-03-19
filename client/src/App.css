@@ -12,7 +12,11 @@
   max-width: 150px; /*control width, this is provisional*/
   height: auto;
   border:solid 5px hsla(0, 95%, 35%, 1);
-  
+}
+
+i {
+  margin-right: 50px;
+  color: black;
 }
 
 /* .gallery_container{

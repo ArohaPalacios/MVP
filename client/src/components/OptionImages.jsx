@@ -27,7 +27,7 @@ const [index, setIndex] = useState(0)
     return(
         <>
         <div>
-        <i className="las la-angle-double-left"></i>
+    
         <button 
         onClick={()=>handleIndex("prev")}>‹‹</button>
         <img
