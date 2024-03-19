@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 
-export default function SearchImageView({populateImage, setPromptInput, promptInput}) {
+export default function SearchImageView({populateImage, setPromptInput, promptInput, setError}) {
     //Hold the input data so that I can manipulate it later.
     // const [promptInput, setPromptInput] = useState("")
     
@@ -35,10 +35,18 @@ export default function SearchImageView({populateImage, setPromptInput, promptIn
     try {
       // Contact API and parse response to JSON
       const response = await fetch(url, options);
+      if (!response.ok) {
+        throw new Error("Failed to fetch image data");
+      }
       const json = await response.json();
-  
       // Populate image
-      populateImage(json);
+      if (json.value.length && json.value[0].contentUrl) {
+        
+        populateImage(json);
+      setError(null); // Reset error state if successful
+    } else {
+      setError("Image not found, please try again");
+    }
     } catch (error) {
       console.log(error);
     }

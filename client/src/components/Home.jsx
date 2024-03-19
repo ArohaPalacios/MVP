@@ -9,7 +9,7 @@ export default function() {
     const [gallery, setGallery] = useState([])
     const [sentenceInput, setSentenceInput] = useState("")
     const [promptInput, setPromptInput] = useState("")
-    const [error, setError] = useState (null)
+    const [error, setError] = useState ("")
   
     //populate the state variable that holds the pictures shown as options to choose.
     //the data comes from the SearchImageView component.
@@ -47,6 +47,7 @@ export default function() {
           onChange={handleSentenceInputChange}
           placeholder='Write here the message you want to create.'></textarea>
       <SearchImageView 
+        setError = {setError}
         promptInput = {promptInput}
         setPromptInput={setPromptInput}
         populateImage={(json)=>populateOptionImages(json)}/>
