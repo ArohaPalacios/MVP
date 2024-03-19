@@ -21,7 +21,8 @@
 
 .galleryImages {
   border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
-  margin-bottom: 5px;
+  border-style: ridge;
+    color: #6fbbf6;
 }
 
 .gallery_container {

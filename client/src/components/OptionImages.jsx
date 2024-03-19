@@ -27,7 +27,9 @@ const [index, setIndex] = useState(0)
     return(
         <>
         <div>
-        <button onClick={()=>handleIndex("prev")}>‹‹</button>
+        <i className="las la-angle-double-left"></i>
+        <button 
+        onClick={()=>handleIndex("prev")}>‹‹</button>
         <img
           className='optionImages'
           src=  {images.value[index].contentUrl}/>

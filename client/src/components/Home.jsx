@@ -7,11 +7,12 @@ import Gallery from "./Gallery.jsx"
 export default function() {
     const [optionImages, setOptionImages] = useState(null)
     const [gallery, setGallery] = useState([])
+    const [sentenceInput, setSentenceInput] = useState("")
   
     //populate the state variable that holds the pictures shown as options to choose.
     //the data comes from the SearchImageView component.
     //This function is sent to it as props.
-    function populateImage(json) {
+    function populateOptionImages(json) {
       setOptionImages(json)
     }
   
@@ -28,12 +29,19 @@ export default function() {
     function handleClearGallery() {
       setGallery([])
     }
+
+    function handleSentenceInputChange(event)  {
+        setSentenceInput(event.target.value)
+      }
   
   
     return (
       <>
-      <input></input>
-      <SearchImageView populateImage={(json)=>populateImage(json)}/>
+      <textarea
+          value={sentenceInput}
+          onChange={handleSentenceInputChange}
+          placeholder='Write here the message you want to create.'></textarea>
+      <SearchImageView populateImage={(json)=>populateOptionImages(json)}/>
       {optionImages ? 
         <OptionImages 
           addToGallery= {(newImage)=> handleAddToGallery(newImage)}
