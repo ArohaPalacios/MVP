@@ -1,7 +1,6 @@
 
 var express = require('express');
 var router = express.Router();
-
 const db = require("../model/helper");
 
 /* GET home page. */
@@ -116,7 +115,7 @@ router.post("/api/images", async (req, res, next) => {
 //   } catch (error) {
 //     res.status(500).json({ message: "Internal server error", error });
 //   }
-});
+// });
 
 router.post("/api/sentences", async (req, res, next) => {
   const { sentence} = req.body;
