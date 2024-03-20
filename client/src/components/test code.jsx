@@ -1,7 +1,30 @@
-// {
-//     "search_term" : "apple on hand",
-//     "URL": "https://images.rawpixel.com/image_png_600/czNmcy1wcml2YXRlL3Jhd3BpeGVsX2ltYWdlcy93ZWJzaXRlX2NvbnRlbnQvczcwLWppci0wMDk3My1leWVfNi5wbmc.png?s=KLUaw60QbMici-3SJIj6JTeQSh3J9Sja-Em_l86kBv0",
-//     "type": null,
-//     "concept": "grab an apple",
-//     "sentences_id" : 3 
-// }
+[
+    {
+    "search_term" : "skin drawing",
+    "URL": "https://i.ytimg.com/vi/cDBkp-Aqq8s/maxresdefault.jpg",
+    "type": null,
+    "concept": "skin structure",
+    "sentences_id" : 4 
+    },
+    {
+    "search_term" : "skin surface",
+    "URL": "https://www.aveeno.com/sites/aveeno_us_2/files/threemainlayerofthehuman_793071.jpg",
+    "type": null,
+    "concept": "epidermis",
+    "sentences_id" : 4 
+    },
+    {
+    "search_term" : "colocar ladrillos",
+    "URL": "https://www.wikihow.com/images/c/ce/Lay-Brick-Step-16-Version-2.jpg",
+    "type": null,
+     "concept": "built like brick layers",
+    "sentences_id" : 4 
+    },
+    {
+    "search_term" : "protection",
+    "URL": "http://thestephaneandre.com/wp-content/uploads/2017/02/protectYourIdea_01.jpg",
+    "type": null,
+    "concept": "defense barrier",
+    "sentences_id" : 4 
+    },
+]

@@ -1,5 +1,7 @@
+
 var express = require('express');
 var router = express.Router();
+
 const db = require("../model/helper");
 
 /* GET home page. */
@@ -81,6 +83,39 @@ router.post("/api/images", async (req, res, next) => {
   } catch (err) {
     res.status(500).send(err);
   }
+});
+
+// router.post("/api/images", async (req, res, next) => {
+//   console.log("Request Body:", req.body);
+//   try {
+//     const {images} = req.body; 
+
+//     // Check if images array is provided and not empty
+//     if (!Array.isArray(images) || images.length === 0) {
+//       return res.status(400).json({ message: "Please provide images in the correct format" });
+//     }
+
+//     // Construct an array of promises for inserting images
+//     const insertImages = images.map(async (image) => {
+//       const { search_term, URL, type, concept, sentences_id } = image;
+//       const query = `INSERT INTO images (search_term, URL, type, concept, sentences_id) VALUES ('${search_term}', '${URL}','${type}','${concept}', '${sentences_id}');`;
+//       console.log(await db(query))
+//       return await db(query);
+//     });
+
+//     // Execute all insert queries concurrently
+//     const results = await Promise.all(insertImages);
+//     console.log(results)
+
+//     // Get inserted images from the database
+//     const selectQuery = `SELECT * FROM images;`;
+//     const selectResult = await db(selectQuery);
+//     console.log("********", results.data);
+//     res.send(results.data);
+//     res.status(200).json({ insertedImages: selectResult.data });
+//   } catch (error) {
+//     res.status(500).json({ message: "Internal server error", error });
+//   }
 });
 
 router.post("/api/sentences", async (req, res, next) => {
