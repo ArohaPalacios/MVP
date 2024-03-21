@@ -7,7 +7,7 @@ import Gallery from "./Gallery.jsx"
 export default function() {
     const [optionImages, setOptionImages] = useState(null)
     const [gallery, setGallery] = useState([])
-    const [sentenceInput, setSentenceInput] = useState("")
+    const [sentenceInput, setSentenceInput] = useState(null)
     const [promptInput, setPromptInput] = useState("")
     const [error, setError] = useState ("")
   
@@ -42,8 +42,40 @@ export default function() {
       }
 
     function handleAddToFavorites() {
-
+      if (sentenceInput.length) {
+        addFavoriteSentence()
+      } else {setError("Please, enter message")}
     }
+
+    const addFavoriteSentence = async () => {
+      try {
+        const result = await fetch("api/sentences", {
+          method: "POST",
+          //tell API we're sharing data in json, like when we select "raw" and "json" in Postman.
+          headers: {
+            "Content-Type": "application/json"
+          },
+          //Parse our js data to json, so that the API understands it.
+          body: JSON.stringify({ sentence: sentenceInput }) 
+        });
+        if (!result.ok) {
+          console.log(result.status);
+          setError("Something went wrong, please try again.");
+        }
+        // Parse json to js, so that our app can understand it
+        const json = await result.json();
+        const sentenceId = json.id;
+        setGallery((state) => [...state,{sentences_id: sentenceId} ])
+
+        //clear input
+        setSentenceInput("");
+      } catch (err) {
+        //error that can be seen and investigated by other developers.
+        res.status(500).send(err);
+        //Error message for the user.
+        setError("Something went wrong, please try again.");
+      }
+    };
   
   
     return (
