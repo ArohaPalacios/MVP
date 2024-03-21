@@ -124,6 +124,7 @@ router.post("/api/sentences", async (req, res, next) => {
   //make sure they're run exactly one after the other
   //otherwise the connection with the db is interrupted and I only get 0 as id.
   const query = `INSERT INTO sentences (sentence) VALUES ('${sentence}');SELECT LAST_INSERT_ID() AS id;`
+  //console.log( query)
   try {
     //throw error if sentence is empty.
     if (!sentence.length) {
@@ -134,7 +135,7 @@ router.post("/api/sentences", async (req, res, next) => {
       });
     }
     const results = await db(query);
-    // console.log(results.data)
+    console.log("*********///////////********" + results.data)
 
     // The results is an array holding an object with different keys.
     // in that object, the key insertId holds the last id inserted
