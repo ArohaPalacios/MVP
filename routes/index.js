@@ -120,7 +120,7 @@ router.post("/api/images", async (req, res, next) => {
 
 router.post("/api/sentences", async (req, res, next) => {
   const { sentence} = req.body;
-  const query = `INSERT INTO sentences (sentence) VALUES ('${sentence}');`;
+  const query = `INSERT INTO sentences (sentence) VALUES ('${sentence}');SELECT LAST_INSERT_ID() AS id;`
   try {
     //throw error if sentence is empty.
     if (!sentence.length) {
@@ -130,9 +130,14 @@ router.post("/api/sentences", async (req, res, next) => {
           "please, provide a sentence in the correct format"
       });
     }
-    await db(query);
-    const results = await db(`SELECT * FROM sentences;`);
-    res.send(results.data);
+    const results = await db(query);
+    console.log(results.data)
+
+    // The results is an array holding an object with different keys.
+    // in that object, the key insertId holds the last id inserted
+    const sentenceId = results.data[0].insertId;
+    // send the ID of the newly inserted sentence as response
+    res.status(201).json({ id: sentenceId });
   } catch (err) {
     res.status(500).send(err);
   }

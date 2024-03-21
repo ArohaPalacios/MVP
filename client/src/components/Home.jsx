@@ -7,7 +7,7 @@ import Gallery from "./Gallery.jsx"
 export default function() {
     const [optionImages, setOptionImages] = useState(null)
     const [gallery, setGallery] = useState([])
-    const [sentenceInput, setSentenceInput] = useState(null)
+    const [sentenceInput, setSentenceInput] = useState("")
     const [promptInput, setPromptInput] = useState("")
     const [error, setError] = useState ("")
   
@@ -64,9 +64,11 @@ export default function() {
         }
         // Parse json to js, so that our app can understand it
         const json = await result.json();
+        console.log(json)
         const sentenceId = json.id;
-        setGallery((state) => [...state,{sentences_id: sentenceId} ])
-
+        console.log("Received sentenceId:", sentenceId);
+        setGallery(prevGallery => prevGallery.map(image => ({ ...image, sentences_id: sentenceId })));
+        console.log("Updated gallery:", gallery);
         //clear input
         setSentenceInput("");
       } catch (err) {
