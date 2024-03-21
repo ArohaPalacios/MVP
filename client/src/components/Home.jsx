@@ -10,6 +10,7 @@ export default function() {
     const [sentenceInput, setSentenceInput] = useState("")
     const [promptInput, setPromptInput] = useState("")
     const [error, setError] = useState ("")
+    const [sentencesId, setSentencesId]= useState(null)
   
     //populate the state variable that holds the pictures shown as options to choose.
     //the data comes from the SearchImageView component.
@@ -22,7 +23,8 @@ export default function() {
     }
   
     function handleAddToGallery(newImage) {
-      setGallery((state) => [...state, {...newImage, search_term: promptInput, id: uuidv4()}])
+      const { contentUrl } = newImage;
+      setGallery((state) => [...state, {...newImage, URL: newImage.contentUrl , search_term: promptInput, id: uuidv4()}])
       setPromptInput("")
       setOptionImages(null)
     }
@@ -41,13 +43,26 @@ export default function() {
         setSentenceInput(event.target.value)
       }
 
-    function handleAddToFavorites() {
+    const handleAddToFavorites= async () =>{
       if (sentenceInput.length) {
-        addFavoriteSentence()
-      } else {setError("Please, enter message")}
+        try {
+          await addFavoriteSentence(); // Wait for addFavoriteSentence to complete
+          await addFavoriteImages(); // Wait for addFavoriteImages to complete after addFavoriteSentence
+            // Clear input
+          setSentenceInput("");
+         
+        } catch (err) {
+          //error that can be seen and investigated by other developers.
+          res.status(500).send(err);
+          //Error message for the user.
+          setError("Something went wrong, please try again.");
+        }
+      } else {setError("Failed to add favorites")}
     }
 
+
     const addFavoriteSentence = async () => {
+      console.log(gallery)
       try {
         const result = await fetch("api/sentences", {
           method: "POST",
@@ -65,10 +80,39 @@ export default function() {
         // Parse json to js, so that our app can understand it
         const json = await result.json();
         const sentenceId = json.id;
-        //pass the sentence's id to the images stored in the gallery variable
-        setGallery(prevGallery => prevGallery.map(image => ({ ...image, sentences_id: sentenceId })));
-        //clear input
-        setSentenceInput("");
+        setSentencesId(sentenceId)
+        const updatedGallery = gallery.map(image => ({ ...image, sentences_id: sentencesId }));
+        setGallery(updatedGallery);
+       
+        
+      } catch (err) {
+        //error that can be seen and investigated by other developers.
+        console.error("Error adding favorite sentence:", err);
+        //Error message for the user.
+        setError("Something went wrong, please try again.");
+      }
+    };
+
+    const addFavoriteImages = async () => {
+      try {
+        console.log("Gallery before request:", gallery); 
+        const result = await fetch("/api/images", {
+          method: "POST",
+          //tell API we're sharing data in json, like when we select "raw" and "json" in Postman.
+          headers: {
+            "Content-Type": "application/json"
+          },
+          //Parse our js data to json, so that the API understands it.
+          body: JSON.stringify(gallery) 
+        });
+        console.log("Request Result:", result);
+        if (!result.ok) {
+          console.log(result.status);
+          setError("Something went wrong, please try again.");
+        }
+        // Parse json to js, so that our app can understand it
+        const json = await result.json();
+        
       } catch (err) {
         //error that can be seen and investigated by other developers.
         res.status(500).send(err);
@@ -76,32 +120,6 @@ export default function() {
         setError("Something went wrong, please try again.");
       }
     };
-
-    // const addFavoriteImages = async () => {
-    //   try {
-    //     const result = await fetch("/api/images", {
-    //       method: "POST",
-    //       //tell API we're sharing data in json, like when we select "raw" and "json" in Postman.
-    //       headers: {
-    //         "Content-Type": "application/json"
-    //       },
-    //       //Parse our js data to json, so that the API understands it.
-    //       body: JSON.stringify(gallery) 
-    //     });
-    //     if (!result.ok) {
-    //       console.log(result.status);
-    //       setError("Something went wrong, please try again.");
-    //     }
-    //     // Parse json to js, so that our app can understand it
-    //     const json = await result.json();
-        
-    //   } catch (err) {
-    //     //error that can be seen and investigated by other developers.
-    //     res.status(500).send(err);
-    //     //Error message for the user.
-    //     setError("Something went wrong, please try again.");
-    //   }
-    // };
   
   
     return (

@@ -134,7 +134,7 @@ router.post("/api/sentences", async (req, res, next) => {
       });
     }
     const results = await db(query);
-    console.log(results.data)
+    // console.log(results.data)
 
     // The results is an array holding an object with different keys.
     // in that object, the key insertId holds the last id inserted

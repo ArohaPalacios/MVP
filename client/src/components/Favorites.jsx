@@ -9,7 +9,7 @@ export default function Favorites() {
      //trigger getSentences whenever sentences change
   useEffect(() => {
     getSentences();
-  }, [sentences]);
+  }, []);
 
     function getSentences() {
    //contact api

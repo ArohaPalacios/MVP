@@ -61,3 +61,29 @@
 //     res.status(500).json({ message: "Internal server error", error });
 //   }
 // });
+
+// const handleAddToFavorites = async () => {
+//     if (sentenceInput.length) {
+//       try {
+//         const first = addFavoriteSentence()
+//         const second = gallery.map(image => ({ ...image, sentences_id: sentencesId }));
+//         const third = addFavoriteImages()
+//         // Use Promise.all to await both addFavoriteSentence and addFavoriteImages
+//         const [add] = await Promise.all([first,second , third]);
+        
+//         if (add) {
+//           // Clear input if both promises resolve successfully
+//           setSentenceInput("");
+//         } else {
+//           setError("Failed to add sentence");
+//         }
+//       } catch (err) {
+//         // Handle errors
+//         console.error("Error adding favorites:", err);
+//         // You may want to differentiate between backend errors and frontend errors here
+//         setError("Something went wrong, please try again.");
+//       }
+//     } else {
+//       setError("Failed to add favorites: No sentence input provided");
+//     }
+//   };
