@@ -6,10 +6,10 @@ export default function Favorites() {
     const [showFAvorite, setShowFavorite] = useState(false)
     const [favoriteImages, setFavoriteImages] = useState([])
 
-     //trigger getStudents when loading the page
+     //trigger getSentences whenever sentences change
   useEffect(() => {
     getSentences();
-  }, []);
+  }, [sentences]);
 
     function getSentences() {
    //contact api

@@ -76,6 +76,32 @@ export default function() {
         setError("Something went wrong, please try again.");
       }
     };
+
+    // const addFavoriteImages = async () => {
+    //   try {
+    //     const result = await fetch("/api/images", {
+    //       method: "POST",
+    //       //tell API we're sharing data in json, like when we select "raw" and "json" in Postman.
+    //       headers: {
+    //         "Content-Type": "application/json"
+    //       },
+    //       //Parse our js data to json, so that the API understands it.
+    //       body: JSON.stringify(gallery) 
+    //     });
+    //     if (!result.ok) {
+    //       console.log(result.status);
+    //       setError("Something went wrong, please try again.");
+    //     }
+    //     // Parse json to js, so that our app can understand it
+    //     const json = await result.json();
+        
+    //   } catch (err) {
+    //     //error that can be seen and investigated by other developers.
+    //     res.status(500).send(err);
+    //     //Error message for the user.
+    //     setError("Something went wrong, please try again.");
+    //   }
+    // };
   
   
     return (
