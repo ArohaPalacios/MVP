@@ -64,11 +64,9 @@ export default function() {
         }
         // Parse json to js, so that our app can understand it
         const json = await result.json();
-        console.log(json)
         const sentenceId = json.id;
-        console.log("Received sentenceId:", sentenceId);
+        //pass the sentence's id to the images stored in the gallery variable
         setGallery(prevGallery => prevGallery.map(image => ({ ...image, sentences_id: sentenceId })));
-        console.log("Updated gallery:", gallery);
         //clear input
         setSentenceInput("");
       } catch (err) {

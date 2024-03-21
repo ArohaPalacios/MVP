@@ -120,6 +120,9 @@ router.post("/api/images", async (req, res, next) => {
 
 router.post("/api/sentences", async (req, res, next) => {
   const { sentence} = req.body;
+  //Pass INSERT INTO and SELECT LAST_INSERT_ID() queries together 
+  //make sure they're run exactly one after the other
+  //otherwise the connection with the db is interrupted and I only get 0 as id.
   const query = `INSERT INTO sentences (sentence) VALUES ('${sentence}');SELECT LAST_INSERT_ID() AS id;`
   try {
     //throw error if sentence is empty.
