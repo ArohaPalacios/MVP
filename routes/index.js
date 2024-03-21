@@ -1,6 +1,7 @@
+const db = require("../model/helper");
 var express = require('express');
 var router = express.Router();
-const db = require("../model/helper");
+
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -58,28 +59,62 @@ router.get("/api/sentences/:id", async (req, res, next) => {
   }
 });
 
-// INSERT a new image into the DB
-//Without error handling, when I send an empty object though Postman, this function still creates an image entry with correspondent id and undefined firstname and lastname.
+// // INSERT a new image into the DB
+// //Without error handling, when I send an empty object though Postman, this function still creates an image entry with correspondent id and undefined firstname and lastname.
+// router.post("/api/images", async (req, res, next) => {
+//   //your code here
+//   //I need search_term, URL, type, concept, sentences_id, that will be provided by the client in the req.body.
+//   //Get them as variables by destructuring req.body object.
+//   const { search_term, URL, type, concept, sentences_id } = req.body;
+//   const query = `INSERT INTO images (search_term, URL, type, concept, sentences_id) VALUES ('${search_term}', '${URL}','${type}','${concept}', '${sentences_id}');`;
+//   try {
+//     //throw error if search_term are empty.
+//     if (!search_term.length) {
+//       //set status of the error and send message to client.
+//       res.status(400).send({
+//         message:
+//           "please, provide a search_term in the correct format"
+//       });
+//     }
+//     await db(query);
+//     const results = await db(`SELECT * FROM images;`);
+//     res.send(results.data);
+//   } catch (err) {
+//     res.status(500).send(err);
+//   }
+// });
+
 router.post("/api/images", async (req, res, next) => {
-  //your code here
-  //I need search_term, URL, type, concept, sentences_id, that will be provided by the client in the req.body.
-  //Get them as variables by destructuring req.body object.
-  const { search_term, URL, type, concept, sentences_id } = req.body;
-  const query = `INSERT INTO images (search_term, URL, type, concept, sentences_id) VALUES ('${search_term}', '${URL}','${type}','${concept}', '${sentences_id}');`;
+  console.log("Request Body:", req.body);
   try {
-    //throw error if search_term are empty.
-    if (!search_term.length) {
-      //set status of the error and send message to client.
-      res.status(400).send({
-        message:
-          "please, provide a search_term in the correct format"
-      });
+    const  images = req.body; 
+    console.log(typeof images)
+    console.log(images)
+   // Check if images array is provided and not empty
+    if (!Array.isArray(images) || images.length === 0) {
+      return res.status(400).json({ message: "Please provide images in the correct format" });
     }
-    await db(query);
-    const results = await db(`SELECT * FROM images;`);
-    res.send(results.data);
-  } catch (err) {
-    res.status(500).send(err);
+
+    // Execute each insert query sequentially using for of loop
+    for (const image of images) {
+      const { search_term, URL, type, concept, sentences_id } = image;
+      const query = `INSERT INTO images (search_term, URL, type, concept, sentences_id) VALUES ('${search_term}', '${URL}','${type}','${concept}', '${sentences_id}');`;
+
+      // Execute the insert query one by one
+      console.log(query)
+      const result = await db(query);
+      console.log("Insert result:", result.data);
+    }
+
+    // Get inserted images from the database
+    const selectQuery = `SELECT * FROM images;`;
+    const selectResult = await db(selectQuery);
+
+    // Send the inserted images data as response
+    res.status(200).json({ insertedImages: selectResult.data });
+  } catch (error) {
+    console.error("Error:", error);
+    res.status(500).json({ message: "Internal server error", error });
   }
 });
 

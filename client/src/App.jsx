@@ -13,7 +13,7 @@ function App() {
   return (
     <>
     <Home/>
-    <Favorites/>
+    {/* <Favorites/> */}
     </>
   )
 }
