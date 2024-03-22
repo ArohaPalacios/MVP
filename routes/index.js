@@ -8,20 +8,6 @@ router.get('/', function(req, res, next) {
   res.send({ title: 'Express' })
 });
 
-//get all images
-// router.get("/api/images", async (req, res, next) => {
-//   const query = "SELECT * FROM images;";
-//   try {
-//     const results = await db(query);
-//     console.log("********", results.data);
-//     if (!results.ok) {
-//       res.send("something went wrong")
-//     }
-//     res.send(results.data);
-//   } catch (err) {
-//     res.status(500).send(err);
-//   }
-// });
 
 //get all sentences
 router.get("/api/sentences", async (req, res, next) => {
@@ -59,30 +45,6 @@ router.get("/api/sentences/:id", async (req, res, next) => {
   }
 });
 
-// // INSERT a new image into the DB
-// //Without error handling, when I send an empty object though Postman, this function still creates an image entry with correspondent id and undefined firstname and lastname.
-// router.post("/api/images", async (req, res, next) => {
-//   //your code here
-//   //I need search_term, URL, type, concept, sentences_id, that will be provided by the client in the req.body.
-//   //Get them as variables by destructuring req.body object.
-//   const { search_term, URL, type, concept, sentences_id } = req.body;
-//   const query = `INSERT INTO images (search_term, URL, type, concept, sentences_id) VALUES ('${search_term}', '${URL}','${type}','${concept}', '${sentences_id}');`;
-//   try {
-//     //throw error if search_term are empty.
-//     if (!search_term.length) {
-//       //set status of the error and send message to client.
-//       res.status(400).send({
-//         message:
-//           "please, provide a search_term in the correct format"
-//       });
-//     }
-//     await db(query);
-//     const results = await db(`SELECT * FROM images;`);
-//     res.send(results.data);
-//   } catch (err) {
-//     res.status(500).send(err);
-//   }
-// });
 
 router.post("/api/images", async (req, res, next) => {
   console.log("Request Body:", req.body);
@@ -105,13 +67,12 @@ router.post("/api/images", async (req, res, next) => {
       await db(query);
       
     }
-
-    // Get inserted images from the database
+    // Get all images from the database
     const selectQuery = `SELECT * FROM images;`;
     const selectResult = await db(selectQuery);
 
-    // Send the inserted images data as response
-    res.status(200).send({ insertedImages: selectResult.data });
+    // Send all the images data as response
+    res.status(200).send({ allImages: selectResult.data });
   } catch (error) {
     console.error("Error:", error);
     res.status(500).send({ message: "Internal server error", error });

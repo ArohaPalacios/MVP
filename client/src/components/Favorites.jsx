@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 export default function Favorites() {
 
     const [sentences, setSentences] = useState([])
-    const [showFAvorite, setShowFavorite] = useState(false)
     const [favoriteImages, setFavoriteImages] = useState([])
 
      //trigger getSentences whenever sentences change
