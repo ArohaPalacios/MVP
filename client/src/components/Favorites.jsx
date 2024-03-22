@@ -1,9 +1,13 @@
 import { useEffect, useState } from "react";
+import React from "react";
+import{Link} from "react-router-dom"
+import{useParams} from "react-router-dom"
 
 export default function Favorites() {
 
     const [sentences, setSentences] = useState([])
-    const [favoriteImages, setFavoriteImages] = useState([])
+    const [sentenceId, setSentenceId] = useState (null)
+    // const [favoriteImages, setFavoriteImages] = useState([])
 
      //trigger getSentences whenever sentences change
   useEffect(() => {
@@ -24,43 +28,19 @@ export default function Favorites() {
    });
     }
 
-    function getSentenceImages (sentenceId) {
-     const id = sentenceId
-        //contact api
-        fetch(`/api/images/${id}`)
-        //parse api response to js
-        .then(response => response.json())
-        //populate favoriteImages state variable with the retrieved data.
-        .then(sentenceImages => {
-            setFavoriteImages(sentenceImages);
-        })
-        .catch(error => {
-        console.log(error);
-        });
-    }
-
 
     return (
         <>
         <h4>My favorite sentences</h4>
-        <ul>
+        
         {sentences.length? sentences.map((sentence)=> {
            return( 
-           <li 
-            key={sentence.id}>{sentence.sentence}
-                <button onClick={()=>getSentenceImages(sentence.id)}>show</button>
-            </li>)  
+           <div key={sentence.id}>
+            <Link to={`/favorites/${sentence.id}`}>
+              {sentence.sentence}
+            </Link>
+            </div>)  
         }): null}
-        </ul>
-        <div className="gallery_container">
-               {favoriteImages.length ? (favoriteImages.map((image)=> {
-                return <img 
-                    key= {image.id}
-                    className='galleryImages'
-                    src={image.URL}/>
-               })) : null
-               } 
-        </div>
         </>
     )
 }

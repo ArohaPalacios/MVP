@@ -76,3 +76,31 @@
 //     res.status(500).send(err);
 //   }
 // });
+
+//   const getSentence = async () => {
+//         try{
+//            //contact api
+//            const response = await fetch(`/api/sentences/${sentenceId}`)
+//            //parse api response to js
+//            const sentence = response.json()
+//            //populate state variable with the retrieved data.
+//             setSelectedSentence(sentence);
+//             console.log(sentence)
+//            } catch(error) {
+//            console.log(error.message);
+//            };
+//     }
+
+
+    // const getSentenceImages = async () => {
+    //     try{
+    //        //contact api
+    //        const response = await fetch(`/api/images/${sentenceId}`)
+    //        //parse api response to js
+    //        const sentenceImages = response.json()
+    //        //populate state variable with the retrieved data.
+    //        setFavoriteImages(sentenceImages);
+    //        } catch(error) {
+    //        console.log(error.message);
+    //        };
+    // }
