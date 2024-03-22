@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import React from "react";
 import{Link} from "react-router-dom"
-import{useParams} from "react-router-dom"
+import{useParams, Outlet} from "react-router-dom"
 
 export default function Favorites() {
 
@@ -32,7 +32,7 @@ export default function Favorites() {
     return (
         <>
         <h4>My favorite sentences</h4>
-        
+        <hr/>
         {sentences.length? sentences.map((sentence)=> {
            return( 
            <div key={sentence.id}>
@@ -41,6 +41,8 @@ export default function Favorites() {
             </Link>
             </div>)  
         }): null}
+        <hr/>
+        <Outlet/>
         </>
     )
 }
