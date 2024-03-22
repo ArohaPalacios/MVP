@@ -46,8 +46,9 @@ export default function() {
     const handleAddToFavorites= async () =>{
       if (sentenceInput.length) {
         try {
-          await addFavoriteSentence(); // Wait for addFavoriteSentence to complete
-          await addFavoriteImages(); // Wait for addFavoriteImages to complete after addFavoriteSentence
+          await addFavoriteSentence(); 
+          console.log(gallery)// Wait for addFavoriteSentence to complete
+          // Wait for addFavoriteImages to complete after addFavoriteSentence
             // Clear input
           setSentenceInput("");
          
@@ -79,10 +80,12 @@ export default function() {
         }
         // Parse json to js, so that our app can understand it
         const json = await result.json();
+        console.log("json: " , json)
         const sentenceId = json.id;
-        setSentencesId(sentenceId)
-        const updatedGallery = gallery.map(image => ({ ...image, sentences_id: sentencesId }));
-        setGallery(updatedGallery);
+        //setSentencesId(sentenceId)
+        const updatedGallery = gallery.map(image => ({ ...image, sentences_id: sentenceId }));
+        //setGallery(updatedGallery);
+        await addFavoriteImages(updatedGallery); 
        
         
       } catch (err) {
@@ -93,8 +96,10 @@ export default function() {
       }
     };
 
-    const addFavoriteImages = async () => {
+    const addFavoriteImages = async (gallery) => {
+      
       try {
+          
         console.log("Gallery before request:", gallery); 
         const result = await fetch("/api/images", {
           method: "POST",
@@ -112,7 +117,7 @@ export default function() {
         }
         // Parse json to js, so that our app can understand it
         const json = await result.json();
-        
+      
       } catch (err) {
         //error that can be seen and investigated by other developers.
         res.status(500).send(err);
