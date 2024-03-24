@@ -59,7 +59,7 @@ export default function() {
           //Error message for the user.
           setError("Something went wrong, please try again.");
         }
-      } else {setError("Failed to add favorites")}
+      } else {setError("Please, provide the meaning of your message in the MESSAGE field.")}
     }
 
 

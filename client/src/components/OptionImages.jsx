@@ -29,16 +29,24 @@ const [index, setIndex] = useState(0)
     return(
 
        <>
-        <div>
+        <div className="container col">
         <button 
-        onClick={()=>handleIndex("prev")}>‹‹</button>
+            type="button" 
+            class="btn btn-light btn-outline-dark custom-button prevNext-button"
+            onClick={()=>handleIndex("prev")}>‹‹</button>
         {images ? (
         <img
           className='optionImages'
           src=  {images.value[index].contentUrl}/>) : null}
-        <button onClick={()=>handleIndex("next")}>››</button>
+        <button 
+            type="button" 
+            class="btn btn-light btn-outline-dark custom-button prevNext-button"
+            onClick={()=>handleIndex("next")}>››</button>
         </div>
-        <button onClick={()=> sendToGallery(images.value[index])}>ADD</button>
+        <button 
+            type="button" 
+            class="btn btn-light btn-outline-dark custom-button"
+            onClick={()=> sendToGallery(images.value[index])}>I like it! </button>
         </>
     )
   }
