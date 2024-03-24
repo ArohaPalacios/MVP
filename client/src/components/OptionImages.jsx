@@ -32,7 +32,7 @@ const [index, setIndex] = useState(0)
         <div className="container col">
         <button 
             type="button" 
-            class="btn btn-light btn-outline-dark custom-button prevNext-button"
+            className="btn btn-light btn-outline-dark custom-button prevNext-button"
             onClick={()=>handleIndex("prev")}>‹‹</button>
         {images ? (
         <img
@@ -45,7 +45,7 @@ const [index, setIndex] = useState(0)
         </div>
         <button 
             type="button" 
-            class="btn btn-light btn-outline-dark custom-button"
+            className="btn btn-light btn-outline-dark custom-button"
             onClick={()=> sendToGallery(images.value[index])}>I like it! </button>
         </>
     )

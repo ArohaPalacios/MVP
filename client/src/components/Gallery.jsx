@@ -32,8 +32,12 @@ export default function({gallery, deleteFromGallery, handleClearGallery, handleA
         )) 
         }
         </div>
-        <button onClick={clearGallery}>CLEAR GALLERY</button>
-        <button onClick={addToFavorites}>ADD TO FAVORITES</button>
+        <button 
+            className= "btn btn-light btn-outline-dark custom-button gallery-button"
+            onClick={clearGallery}>Clear Gallery</button>
+        <button 
+            className= "btn btn-light btn-outline-dark custom-button"
+            onClick={addToFavorites}>Add to favorites</button>
             </>
     )
 }

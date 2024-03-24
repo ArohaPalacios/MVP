@@ -17,17 +17,16 @@
   color: #EFF6E0;
 }
 
-/* form {
-  max-width: 60%;
-  margin: auto;
-} */
-
 textarea {
   height: 250px;
 }
 
 .custom-button {
   border-color: #AEC3B0;
+}
+
+.gallery-button {
+  margin-right: 1%;
 }
 
 .prevNext-button {
@@ -175,7 +174,7 @@ i {
 .galleryImages {
   border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
   border-style: ridge;
-    color: #6fbbf6;
+    color: #AEC3B0;
 }
 
 .gallery_container {
