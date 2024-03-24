@@ -11,7 +11,6 @@ export default function() {
     const [sentenceInput, setSentenceInput] = useState("")
     const [promptInput, setPromptInput] = useState("")
     const [error, setError] = useState ("")
-    const [sentencesId, setSentencesId]= useState(null)
   
     //populate the state variable that holds the pictures shown as options to choose.
     //the data comes from the SearchImageView component.
@@ -41,6 +40,7 @@ export default function() {
     }
 
     function handleSentenceInputChange(event)  {
+        setError("")
         setSentenceInput(event.target.value)
       }
 
@@ -87,7 +87,6 @@ export default function() {
         const updatedGallery = gallery.map(image => ({ ...image, sentences_id: sentenceId }));
         //setGallery(updatedGallery);
         await addFavoriteImages(updatedGallery); 
-       
         
       } catch (err) {
         //error that can be seen and investigated by other developers.
@@ -116,8 +115,8 @@ export default function() {
           console.log(result.status);
           setError("Something went wrong, please try again.");
         }
-        // Parse json to js, so that our app can understand it
-        const json = await result.json();
+
+        setGallery([]);
       
       } catch (err) {
         //error that can be seen and investigated by other developers.
