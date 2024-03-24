@@ -130,10 +130,15 @@ export default function() {
   
     return (
       <>
-      <textarea
-          value={sentenceInput}
-          onChange={handleSentenceInputChange}
-          placeholder='Write here the message you want to create.'></textarea>
+      <div class="input-group mb-3">
+        <span class="input-group-text">MESSAGE</span>
+        <textarea
+            className="form-control" aria-label="With textarea"
+            value={sentenceInput}
+            onChange={handleSentenceInputChange}
+            placeholder='Write here the message you want to create.'>
+        </textarea>
+      </div>
       <SearchImageView 
         setError = {setError}
         promptInput = {promptInput}

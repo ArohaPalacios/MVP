@@ -4,12 +4,20 @@
   padding: 2rem;
   text-align: center;
   font-family: "Poppins", sans-serif;
+  background-color: #EFF6E0;
 } 
 .active {
   font-family: "Poppins", sans-serif;
   font-weight: 600;
   font-style: normal;
 }
+
+.custom-navbar {
+  background-color: #01161E;
+  color: #EFF6E0;
+}
+
+
 .poppins-thin {
   font-family: "Poppins", sans-serif;
   font-weight: 100;
