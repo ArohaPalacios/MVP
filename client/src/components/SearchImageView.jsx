@@ -59,10 +59,10 @@ export default function SearchImageView({populateImage, setPromptInput, promptIn
         <input
           type="text" 
           placeholder= "What image are you looking for?"
-          className="form-control"
+          className="form-control small-text"
           value={promptInput}
           onChange={handleInputChange}></input>
-        <button className="input-group-text">search</button>
+        <button className="input-group-text custom-color">search</button>
         </div>
       </form>
       </>

@@ -134,9 +134,9 @@ export default function() {
         <div className= "col col-md-6 col-12">
         
           <div className="input-group mb-3">
-            <span className="input-group-text">MESSAGE</span>
+            <span className="input-group-text custom-color ">MESSAGE</span>
             <textarea
-                className="form-control" aria-label="With textarea"
+                className="form-control small-text" aria-label="With textarea"
                 value={sentenceInput}
                 onChange={handleSentenceInputChange}
                 placeholder='Write here the picto-message you want to create.'>
@@ -156,7 +156,7 @@ export default function() {
         </div>
       </div>
       <div className= "gallery_area">
-        <p>Your picto-message will be shown here... </p>
+        <p className="small-text">Your picto-message will be shown here... </p>
       {gallery.length ? 
         <Gallery 
           handleAddToFavorites = {handleAddToFavorites}

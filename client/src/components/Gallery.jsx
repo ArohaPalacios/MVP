@@ -37,10 +37,10 @@ export default function({gallery, deleteFromGallery, handleClearGallery, handleA
         </div>
         <div className= "gallery-buttons-div">
         <button 
-            className= "btn btn-light btn-outline-dark btn-sm custom-button gallery-button"
+            className= "btn btn-light btn-outline-dark btn-sm custom-button gallery-button custom-color"
             onClick={clearGallery}>Clear Gallery</button>
         <button 
-            className= "btn btn-light btn-outline-dark btn-sm custom-button"
+            className= "btn btn-light btn-outline-dark btn-sm custom-button custom-color"
             onClick={addToFavorites}>Add to favorites</button>
         </div>
     </>
