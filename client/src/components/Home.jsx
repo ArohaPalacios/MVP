@@ -59,7 +59,7 @@ export default function() {
           //Error message for the user.
           setError("Something went wrong, please try again.");
         }
-      } else {setError("Please, provide the meaning of your message in the MESSAGE field.")}
+      } else {setError("Please, provide the meaning of your picto-message in the MESSAGE field.")}
     }
 
 
@@ -139,7 +139,7 @@ export default function() {
                 className="form-control" aria-label="With textarea"
                 value={sentenceInput}
                 onChange={handleSentenceInputChange}
-                placeholder='Write here the message you want to create.'>
+                placeholder='Write here the picto-message you want to create.'>
             </textarea>
           </div>
         </div>
