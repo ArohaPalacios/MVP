@@ -162,17 +162,25 @@ textarea {
   width: 100%;
   max-width: 150px; /*control width, this is provisional*/
   height: auto;
-  border:solid 2px #AEC3B0;
+  
   margin-left: 1%;
   margin-right: 1%;
   margin-bottom: 1%;
   border-radius: 5px;
 }
 
-i {
-  margin-right: 50px;
-  color: black;
+.galleryImages {
+  border:solid 1px #AEC3B0;
 }
+
+.optionImages{
+  border:solid 2px #AEC3B0;
+}
+
+/* .custom-i {
+  margin-right: 50px;
+  color: #AEC3B0;
+} */
 
 .gallery_area{
   border:solid 1px #AEC3B0;
@@ -183,11 +191,15 @@ i {
   padding-bottom: 1%;
 }
 
-.galleryImages {
+.gallery-buttons-div{
+  margin-left: 30%;
+}
+
+/* .galleryImages {
   border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
   border-style: ridge;
     color: #AEC3B0;
-}
+} */
 
 .gallery_container {
   display: flex;
