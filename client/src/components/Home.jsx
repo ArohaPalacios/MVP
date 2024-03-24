@@ -130,6 +130,7 @@ export default function() {
   
     return (
       <>
+      <h4> Say it with pictures!</h4>
       <div className="row">
         <div className= "col col-md-6 col-12">
         
