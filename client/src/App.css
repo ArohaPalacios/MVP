@@ -35,6 +35,18 @@ textarea {
   font-style: normal;
 }
 
+.sentences-container {
+  text-align: left;
+}
+
+.small-text {
+  font-family: "Poppins", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+  font-size: small;
+  color: #124559
+}
+
 .poppins-thin {
   font-family: "Poppins", sans-serif;
   font-weight: 100;

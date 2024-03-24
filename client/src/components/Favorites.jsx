@@ -31,18 +31,27 @@ export default function Favorites() {
 
     return (
         <>
-        <h4>My favorite sentences</h4>
-        <hr/>
-        {sentences.length? sentences.map((sentence)=> {
-           return( 
-           <div key={sentence.id}>
-            <Link to={`/favorites/${sentence.id}`}>
-              {sentence.sentence}
-            </Link>
-            </div>)  
-        }): null}
-        <hr/>
-        <Outlet/>
+        <h4>My favorite picto-messages</h4>
+        <div className="row">
+          <div className="col col-12 col-md-4">
+            {sentences.length? sentences.map((sentence)=> {
+              return( 
+              <div 
+                className="sentences-container"
+                key={sentence.id}>
+                <Link 
+                  className="small-text"
+                  to={`/favorites/${sentence.id}`}>
+                  {sentence.sentence}
+                </Link>
+                <hr/>
+                </div>)  
+            }): null}
+          </div>
+          <div className="col">
+            <Outlet/>
+          </div>
+        </div>
         </>
     )
 }
