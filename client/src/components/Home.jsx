@@ -130,24 +130,31 @@ export default function() {
   
     return (
       <>
-      <div class="input-group mb-3">
-        <span class="input-group-text">MESSAGE</span>
-        <textarea
-            className="form-control" aria-label="With textarea"
-            value={sentenceInput}
-            onChange={handleSentenceInputChange}
-            placeholder='Write here the message you want to create.'>
-        </textarea>
+      <div className="row">
+        <div className= "col col-6">
+        
+          <div className="input-group mb-3">
+            <span className="input-group-text">MESSAGE</span>
+            <textarea
+                className="form-control" aria-label="With textarea"
+                value={sentenceInput}
+                onChange={handleSentenceInputChange}
+                placeholder='Write here the message you want to create.'>
+            </textarea>
+          </div>
+        </div>
+        <div className= "col col-6">
+        <SearchImageView 
+          setError = {setError}
+          promptInput = {promptInput}
+          setPromptInput={setPromptInput}
+          populateImage={(json)=>populateOptionImages(json)}/>
+        {error? <p>{error}</p> :(optionImages ? 
+          <OptionImages 
+            addToGallery= {(newImage)=> handleAddToGallery(newImage)}
+            images= {optionImages}/>: null)}
+        </div>
       </div>
-      <SearchImageView 
-        setError = {setError}
-        promptInput = {promptInput}
-        setPromptInput={setPromptInput}
-        populateImage={(json)=>populateOptionImages(json)}/>
-      {error? <p>{error}</p> :(optionImages ? 
-        <OptionImages 
-          addToGallery= {(newImage)=> handleAddToGallery(newImage)}
-          images= {optionImages}/>: null)}
       {gallery.length ? 
       <Gallery 
         handleAddToFavorites = {handleAddToFavorites}
