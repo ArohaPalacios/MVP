@@ -131,7 +131,7 @@ export default function() {
     return (
       <>
       <div className="row">
-        <div className= "col col-6">
+        <div className= "col col-md-6 col-12">
         
           <div className="input-group mb-3">
             <span className="input-group-text">MESSAGE</span>
@@ -143,26 +143,28 @@ export default function() {
             </textarea>
           </div>
         </div>
-        <div className= "col col-6">
-        <SearchImageView 
-          setError = {setError}
-          promptInput = {promptInput}
-          setPromptInput={setPromptInput}
-          populateImage={(json)=>populateOptionImages(json)}/>
-        {error? <p>{error}</p> :(optionImages ? 
-          <OptionImages 
-            addToGallery= {(newImage)=> handleAddToGallery(newImage)}
-            images= {optionImages}/>: null)}
+        <div className= "col col-md-6 col-12">
+          <SearchImageView 
+            setError = {setError}
+            promptInput = {promptInput}
+            setPromptInput={setPromptInput}
+            populateImage={(json)=>populateOptionImages(json)}/>
+          {error? <p>{error}</p> :(optionImages ? 
+            <OptionImages 
+              addToGallery= {(newImage)=> handleAddToGallery(newImage)}
+              images= {optionImages}/>: null)}
         </div>
       </div>
+      <div className= "gallery_area">
+        <p>Your picto-message will be shown here... </p>
       {gallery.length ? 
-      <Gallery 
-        handleAddToFavorites = {handleAddToFavorites}
-        gallery = {gallery} 
-        handleClearGallery= {handleClearGallery}
-        deleteFromGallery={(id)=>handleDeleteFromGallery(id)}/> 
-        : null}
-
+        <Gallery 
+          handleAddToFavorites = {handleAddToFavorites}
+          gallery = {gallery} 
+          handleClearGallery= {handleClearGallery}
+          deleteFromGallery={(id)=>handleDeleteFromGallery(id)}/> 
+          : null}
+      </div>
       </>
     )
 }

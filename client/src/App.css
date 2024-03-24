@@ -22,6 +22,10 @@
   margin: auto;
 } */
 
+textarea {
+  height: 250px;
+}
+
 .custom-button {
   border-color: #AEC3B0;
 }
@@ -159,9 +163,13 @@ i {
   color: black;
 }
 
-.gallery_container{
+.gallery_area{
   border:solid 1px #AEC3B0;
   border-radius: 5px;
+  min-height: 100px;
+  text-align: left;
+  padding-left: 1%;
+  padding-bottom: 1%;
 }
 
 .galleryImages {
