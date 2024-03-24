@@ -55,10 +55,14 @@ export default function SearchImageView({populateImage, setPromptInput, promptIn
     return (
       <>
         <form onSubmit={handleSubmit}>
+        <div class="input-group mb-3"> 
         <input
+          type="text" 
+          className="form-control"
           value={promptInput}
           onChange={handleInputChange}></input>
-        <button >search</button>
+        <button className="input-group-text">search</button>
+        </div>
       </form>
       </>
     )

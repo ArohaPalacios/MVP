@@ -137,7 +137,4 @@
   <input type="text" class="form-control" placeholder="Server" aria-label="Server">
 </div>
 
-<div class="input-group">
-  <span class="input-group-text">With textarea</span>
-  <textarea ></textarea>
-</div>
+
