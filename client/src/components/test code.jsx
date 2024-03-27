@@ -1,3 +1,14 @@
+//Example code to test in POSTMAN.
+//First step: add a sentence to the sentences table:
+//method POST
+//URL: http://localhost:4000/api/sentences/
+//body:
+{"sentence" : "Go downstairs to the reception desk and book an appointment for a bloodtest"}
+
+//second step: add the corresponding images to the images table.
+//method POST
+//URL: http://localhost:4000/api/images/
+//body:
 [
     {
     "search_term" : "skin drawing",
@@ -36,73 +47,5 @@
     },
 ]
 
-//get all images
-// router.get("/api/images", async (req, res, next) => {
-//   const query = "SELECT * FROM images;";
-//   try {
-//     const results = await db(query);
-//     console.log("********", results.data);
-//     if (!results.ok) {
-//       res.send("something went wrong")
-//     }
-//     res.send(results.data);
-//   } catch (err) {
-//     res.status(500).send(err);
-//   }
-// });
-
-
-// // INSERT one new image into the DB
-// //Without error handling, when I send an empty object though Postman, this function still creates an image entry with correspondent id and undefined firstname and lastname.
-// router.post("/api/images", async (req, res, next) => {
-//   //your code here
-//   //I need search_term, URL, type, concept, sentences_id, that will be provided by the client in the req.body.
-//   //Get them as variables by destructuring req.body object.
-//   const { search_term, URL, type, concept, sentences_id } = req.body;
-//   const query = `INSERT INTO images (search_term, URL, type, concept, sentences_id) VALUES ('${search_term}', '${URL}','${type}','${concept}', '${sentences_id}');`;
-//   try {
-//     //throw error if search_term are empty.
-//     if (!search_term.length) {
-//       //set status of the error and send message to client.
-//       res.status(400).send({
-//         message:
-//           "please, provide a search_term in the correct format"
-//       });
-//     }
-//     await db(query);
-//     const results = await db(`SELECT * FROM images;`);
-//     res.send(results.data);
-//   } catch (err) {
-//     res.status(500).send(err);
-//   }
-// });
-
-//   const getSentence = async () => {
-//         try{
-//            //contact api
-//            const response = await fetch(`/api/sentences/${sentenceId}`)
-//            //parse api response to js
-//            const sentence = response.json()
-//            //populate state variable with the retrieved data.
-//             setSelectedSentence(sentence);
-//             console.log(sentence)
-//            } catch(error) {
-//            console.log(error.message);
-//            };
-//     }
-
-
-    // const getSentenceImages = async () => {
-    //     try{
-    //        //contact api
-    //        const response = await fetch(`/api/images/${sentenceId}`)
-    //        //parse api response to js
-    //        const sentenceImages = response.json()
-    //        //populate state variable with the retrieved data.
-    //        setFavoriteImages(sentenceImages);
-    //        } catch(error) {
-    //        console.log(error.message);
-    //        };
-    // }
 
     
