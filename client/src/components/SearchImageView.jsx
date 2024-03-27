@@ -1,15 +1,14 @@
-
 import React from "react";
-//const apiKey = import.meta.env.VITE_RAPIDAPI_KEY;
-console.log(import.meta.env.VITE_RAPIDAPI_KEY)
 
+//Get the user's input and send it to parent(Home) to handle it.
+//Get images from external API and send to parent (Home) to handle it.
 export default function SearchImageView({populateImage, setPromptInput, promptInput, setError}) {
   
     //URL of the API, I send the input as params.
     const url = `https://images-search1.p.rapidapi.com/search?q=${promptInput}`;
     const apiKey = '8352e5b3a5msh8b1b653715e9095p1e8357jsncb4ca27a0aa8'
     
-    //Fetch second argument. The API proposed this syntaxis, separated from the fetch, and it looks cleaner.
+    //Fetch's second argument. The API proposed this syntaxis in the web: it creates a variable with the second argument we need to pass to the fetch method, so that the code looks cleaner.
     const options = {
       method: 'GET',
       headers: {
@@ -18,7 +17,7 @@ export default function SearchImageView({populateImage, setPromptInput, promptIn
         'X-RapidAPI-Host': 'images-search1.p.rapidapi.com'
       }}
     
-    //populate input variable with the text the user enters in input field.
+    //populate input variable with the prompt the user enters in input field.
     function handleInputChange(event)  {
       setPromptInput(event.target.value)
       }
@@ -30,8 +29,8 @@ export default function SearchImageView({populateImage, setPromptInput, promptIn
         event.preventDefault()
         getImage()
       }
-       //retrieve image data and populate image state variable.
-
+       
+  //retrieve image data and call the function populateImage. This sends the image to the parent (Home) so that it can populate the optionImages state variable.
   const getImage = async () => {
     try {
       // Contact API and parse response to JSON
@@ -55,7 +54,7 @@ export default function SearchImageView({populateImage, setPromptInput, promptIn
     return (
       <>
         <form onSubmit={handleSubmit}>
-        <div class="input-group mb-3"> 
+        <div className="input-group mb-3"> 
         <input
           type="text" 
           placeholder= "What image are you looking for?"

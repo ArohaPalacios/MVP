@@ -22,6 +22,7 @@ const [index, setIndex] = useState(0)
         }
     }
 
+    //when "I like it!" button is clicked, send the image data to the parent (Home) so that it can update the gallery variable.
     function sendToGallery(image) {
         addToGallery(image)
     }
@@ -40,7 +41,7 @@ const [index, setIndex] = useState(0)
           src=  {images.value[index].contentUrl}/>) : null}
         <button 
             type="button" 
-            class="btn btn-light btn-outline-dark custom-button prevNext-button custom-color"
+            className="btn btn-light btn-outline-dark custom-button prevNext-button custom-color"
             onClick={()=>handleIndex("next")}>››</button>
         </div>
         <button 

@@ -4,34 +4,29 @@ import{useParams} from "react-router-dom"
 
 export default function FavGallery () {
     const [favoriteImages, setFavoriteImages] = useState([])
-    const [selectedSentence, setSelectedSentence] = useState ()
     const {sentenceId} = useParams ()
 
-
     function getSentenceImages () {
-        // const id = sentenceId
-           //contact api
-           fetch(`/api/images/${sentenceId}`)
-           //parse api response to js
-           .then(response => response.json())
-           //populate favoriteImages state variable with the retrieved data.
-           .then(sentenceImages => {
-               setFavoriteImages(sentenceImages);
-               
+        //contact DB
+        fetch(`/api/images/${sentenceId}`)
+        //parse api response to js
+        .then(response => response.json())
+        //populate favoriteImages state variable with the retrieved data.
+        .then(sentenceImages => {
+            setFavoriteImages(sentenceImages);   
            })
-           .catch(error => {
-           console.log(error);
-           });
+        .catch(error => {
+        console.log(error);
+        });
     }
 
+    //Thanks to front end routes, when I click a message the URL changes to the corresponding sentences_id. 
+    //trigger getSentenceImages every time this clicked id changes.
+    //If I let it as an empty array, it works only the first time you click a sentence, but not anymore.
     useEffect(() => {
-        getSentenceImages();
-        
+        getSentenceImages(); 
       }, [sentenceId]);
 return (
-<>
-
-
 <div className="gallery_container">
     {favoriteImages.length ? (favoriteImages.map((image)=> {
      return <img 
@@ -41,6 +36,5 @@ return (
     })) : null
     } 
 </div>
-</>
 )
 }

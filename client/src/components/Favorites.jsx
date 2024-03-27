@@ -1,25 +1,23 @@
 import { useEffect, useState } from "react";
 import React from "react";
 import{Link} from "react-router-dom"
-import{useParams, Outlet} from "react-router-dom"
+import{Outlet} from "react-router-dom"
 
 export default function Favorites() {
 
     const [sentences, setSentences] = useState([])
-    const [sentenceId, setSentenceId] = useState (null)
-    // const [favoriteImages, setFavoriteImages] = useState([])
 
-     //trigger getSentences whenever sentences change
+  //trigger getSentences when loading page
   useEffect(() => {
     getSentences();
   }, []);
 
     function getSentences() {
-   //contact api
+   //contact DB
    fetch("/api/sentences")
-   //parse api response to js
+   //parse DB response to js
    .then(response => response.json())
-   //populate students state variable with the retrieved data.
+   //populate sentences state variable with the retrieved data.
    .then(sentences => {
      setSentences(sentences);
    })
