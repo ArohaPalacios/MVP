@@ -1,19 +1,19 @@
 
 import React from "react";
-
+//const apiKey = import.meta.env.VITE_RAPIDAPI_KEY;
+console.log(import.meta.env.VITE_RAPIDAPI_KEY)
 
 export default function SearchImageView({populateImage, setPromptInput, promptInput, setError}) {
-    //Hold the input data so that I can manipulate it later.
-    // const [promptInput, setPromptInput] = useState("")
-    
+  
     //URL of the API, I send the input as params.
     const url = `https://images-search1.p.rapidapi.com/search?q=${promptInput}`;
+    const apiKey = '8352e5b3a5msh8b1b653715e9095p1e8357jsncb4ca27a0aa8'
     
     //Fetch second argument. The API proposed this syntaxis, separated from the fetch, and it looks cleaner.
     const options = {
       method: 'GET',
       headers: {
-        'X-RapidAPI-Key': '8352e5b3a5msh8b1b653715e9095p1e8357jsncb4ca27a0aa8',
+        'X-RapidAPI-Key': apiKey,
         "Content-Type": "application/json",
         'X-RapidAPI-Host': 'images-search1.p.rapidapi.com'
       }}
