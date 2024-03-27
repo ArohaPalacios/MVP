@@ -26,7 +26,7 @@ DB_PASS=root
 DB_NAME=favorites
 
 - Run `npm run migrate` in the project folder of this repository, in a new terminal window. This will create two tables called 'images' and 'sentences' in your database.
-![DB tables](https://github.com/ArohaPalacios/MVP/assets/144830938/a79febea-89fb-448e-a674-db1a9aefccaf)
+![DB tables](./ASSETS/DB%20tables.png)
 
 - Make sure you understand how the tables are constructed. In your MySQL console, you can run `use favorites;` and then `describe images;` to see the structure of the images table, or `describe sentences;` to see the structure of the sentences table.
 
