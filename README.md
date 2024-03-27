@@ -33,7 +33,9 @@ DB_NAME=favorites
 ### Connect to API
 - To access the images API you must go to this URL: https://rapidapi.com/opensorted/api/images-search1/  (NOTE: you might have to sign in).
 - Click the "subscribe to test" button to subscribe to the API (It's 100% free, no account data is required!).
+![Connect to API](./ASSETS/Connect%20to%20API.png)
 - In the dropdown menu at the right side of the window, select (JavaScript)fetch. This will show the syntax for a basic GET request. In the headers, you will see your API-key.
+![API-Key](./ASSETS/API-Key.png)
 - In the app repository, go to client/src/components/SearchImageView. Change the current value of the const apiKey variable to your own API-Key.
 
 ### Development
